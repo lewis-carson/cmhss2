@@ -2,6 +2,7 @@
 """
 Download letters from the Founders Online API.
 Uses the metadata file to get document references and downloads the full content.
+Appends to a single JSON file and can resume from the last downloaded document.
 """
 
 import json
@@ -16,11 +17,28 @@ import time
 # API base URL
 API_BASE = "https://founders.archives.gov/API/docdata/"
 METADATA_FILE = "founders-online-metadata.json"
-OUTPUT_DIR = "letters"
+OUTPUT_FILE = "letters.jsonl"
+CHECKPOINT_FILE = "download_checkpoint.json"
 
-def setup_output_dir():
-    """Create the output directory if it doesn't exist."""
-    Path(OUTPUT_DIR).mkdir(exist_ok=True)
+def load_checkpoint() -> dict:
+    """Load the checkpoint to resume from the last downloaded document."""
+    if Path(CHECKPOINT_FILE).exists():
+        try:
+            with open(CHECKPOINT_FILE, 'r') as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"Warning: Could not load checkpoint: {e}")
+    return {"last_index": -1, "successful": 0, "failed": 0}
+
+def save_checkpoint(index: int, successful: int, failed: int):
+    """Save the current progress."""
+    checkpoint = {
+        "last_index": index,
+        "successful": successful,
+        "failed": failed
+    }
+    with open(CHECKPOINT_FILE, 'w') as f:
+        json.dump(checkpoint, f)
 
 def extract_doc_id(permalink: str) -> str:
     """
@@ -53,29 +71,23 @@ def fetch_letter(doc_id: str) -> Optional[dict]:
         print(f"Error fetching {doc_id}: {e}")
         return None
 
-def save_letter(doc_id: str, content: dict) -> str:
+def append_letter_to_file(content: dict):
     """
-    Save letter content to a file.
+    Append a letter to the output file in JSONL format.
     
     Args:
-        doc_id: Document ID
         content: Letter content dictionary
-        
-    Returns:
-        Path to saved file
     """
-    # Create filename from doc_id
-    filename = doc_id.replace("/", "_").replace(":", "_") + ".json"
-    filepath = Path(OUTPUT_DIR) / filename
-    
-    with open(filepath, 'w') as f:
-        json.dump(content, f, indent=2)
-    
-    return str(filepath)
+    with open(OUTPUT_FILE, 'a') as f:
+        f.write(json.dumps(content) + '\n')
 
 def main():
     """Main function to download all letters."""
-    setup_output_dir()
+    # Load checkpoint to resume
+    checkpoint = load_checkpoint()
+    start_index = checkpoint["last_index"] + 1
+    successful = checkpoint["successful"]
+    failed = checkpoint["failed"]
     
     # Load metadata
     print(f"Loading metadata from {METADATA_FILE}...")
@@ -95,41 +107,54 @@ def main():
     
     print(f"Found {len(metadata)} documents in metadata")
     
-    # Download letters
-    successful = 0
-    failed = 0
+    if start_index > 0:
+        print(f"Resuming from document {start_index}")
+        print(f"Previous progress: {successful} successful, {failed} failed")
     
-    for idx, doc in enumerate(metadata):
-        print(f"Progress: {idx}/{len(metadata)}")
+    # Download letters
+    for idx in range(start_index, len(metadata)):
+        if idx % 100 == 0:
+            print(f"Progress: {idx}/{len(metadata)} (Successful: {successful}, Failed: {failed})")
+        
+        doc = metadata[idx]
         
         permalink = doc.get("permalink")
         if not permalink:
             print(f"Warning: No permalink for document {idx}")
             failed += 1
+            save_checkpoint(idx, successful, failed)
             continue
         
         doc_id = extract_doc_id(permalink)
         if not doc_id:
             print(f"Warning: Could not extract doc_id from {permalink}")
             failed += 1
+            save_checkpoint(idx, successful, failed)
             continue
         
         # Fetch from API
         letter_data = fetch_letter(doc_id)
         if letter_data:
-            save_letter(doc_id, letter_data)
+            append_letter_to_file(letter_data)
             successful += 1
         else:
             failed += 1
+        
+        # Save checkpoint every 10 documents
+        if idx % 10 == 0:
+            save_checkpoint(idx, successful, failed)
         
         # Rate limiting - be respectful to the API
         if idx % 10 == 0:
             time.sleep(0.1)
     
+    # Final save
+    save_checkpoint(len(metadata) - 1, successful, failed)
+    
     print(f"\nDownload complete!")
     print(f"Successful: {successful}")
     print(f"Failed: {failed}")
-    print(f"Letters saved to {OUTPUT_DIR}/")
+    print(f"Letters saved to {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
