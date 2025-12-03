@@ -1,0 +1,429 @@
+Checking NLTK data...
+Downloading wordnet...
+Downloading omw-1.4...
+Reading letters.jsonl...
+Processing letter 10000...
+Processing letter 20000...
+Processing letter 30000...
+Processing letter 40000...
+Processing letter 50000...
+Processing letter 60000...
+Processing letter 70000...
+Processing letter 80000...
+Processing letter 90000...
+Processing letter 100000...
+Processing letter 110000...
+Processing letter 120000...
+Processing letter 130000...
+Processing letter 140000...
+Processing letter 150000...
+Processing letter 160000...
+Processing letter 170000...
+Processing letter 180000...
+Generating N-grams...
+Processing period: Colonial (16161 letters)
+
+--- Colonial Top Bigrams ---
+new york: 1533
+home day: 1023
+little wind: 947
+benjamin franklin: 925
+george washington: 842
+every thing: 796
+went away: 738
+muddy hole: 693
+mount vernon: 625
+fort cumberland: 619
+doeg run: 560
+act parliament: 558
+spent evening: 556
+ditto ditto: 549
+new england: 510
+franklin esqr: 501
+hble servt: 500
+craven street: 485
+servt washington: 479
+post office: 474
+
+--- Colonial Top Trigrams ---
+george washington paper: 394
+ledger library congress: 384
+library congress george: 384
+congress george washington: 384
+washington paper series: 384
+paper series financial: 384
+series financial paper: 384
+financial paper folio: 380
+hble servt washington: 330
+benjamin franklin esqr: 280
+general ledger ageneral: 278
+ledger ageneral ledger: 278
+ageneral ledger library: 278
+addressed benjamin franklin: 271
+went away breakfast: 271
+warm little wind: 230
+home day alone: 230
+obedt hble servt: 230
+ditto ditto ditto: 209
+rid muddy hole: 208
+Processing period: Revolutionary War (48197 letters)
+
+--- Revolutionary War Top Bigrams ---
+head quarter: 9637
+new york: 9602
+united state: 7341
+respect excellency: 3925
+que vous: 3493
+every thing: 2823
+beg leave: 2806
+servt washington: 2721
+obedt servt: 2540
+west point: 2495
+greatest respect: 2493
+commander chief: 2457
+court martial: 2339
+quarter master: 2262
+excellency obedt: 2259
+rhode island: 2156
+commanding officer: 1967
+major general: 1935
+new jersey: 1730
+general court: 1707
+
+--- Revolutionary War Top Trigrams ---
+united state america: 1441
+washington head quarter: 1328
+greatest respect excellency: 1191
+general court martial: 1073
+de etats unis: 950
+obt servt washington: 856
+quarter master general: 854
+head quarter new: 849
+respect esteem excellency: 840
+addressed monsieur monsieur: 837
+respect excellency obedt: 824
+obedt servt washington: 822
+excellency obedt servt: 781
+servt washington head: 694
+quarter new windsor: 617
+obedt hble servt: 569
+que vous avez: 555
+head quarter middle: 544
+quarter middle brook: 543
+tres obeissant serviteur: 538
+Processing period: Confederation (17812 letters)
+
+--- Confederation Top Bigrams ---
+united state: 4765
+new york: 4136
+noon night: 2600
+morning noon: 2366
+muddy hole: 1790
+mount vernon: 1676
+dogue run: 1664
+thermometer morning: 1360
+que vous: 1200
+every thing: 1012
+mercury morning: 1002
+servt jefferson: 883
+john adam: 831
+etats unis: 820
+state america: 695
+night wind: 688
+hble servt: 673
+obedt servt: 637
+jefferson paris: 622
+day ago: 601
+
+--- Confederation Top Trigrams ---
+morning noon night: 2296
+thermometer morning noon: 1350
+mercury morning noon: 990
+noon night wind: 636
+united state america: 621
+de etats unis: 476
+noon night clear: 470
+washington mount vernon: 402
+noon night morning: 358
+run muddy hole: 327
+dogue run muddy: 307
+servt jefferson paris: 304
+consul vice consul: 303
+morng noon night: 274
+hble servt washington: 258
+obedt hble servt: 255
+le etats unis: 251
+french dogue run: 243
+que vous avez: 239
+obedt servt jefferson: 228
+Processing period: Washington Presidency (27161 letters)
+
+--- Washington Presidency Top Bigrams ---
+united state: 15625
+new york: 6094
+secretary treasury: 2240
+secretary state: 1922
+president united: 1780
+house representative: 1726
+obedt servt: 1714
+servt jefferson: 1624
+treasury department: 1440
+every thing: 1359
+mount vernon: 1237
+per cent: 1206
+beg leave: 1138
+alexander hamilton: 956
+north carolina: 900
+attorney general: 890
+thousand dollar: 844
+perfect respect: 779
+south carolina: 776
+taken place: 756
+
+--- Washington Presidency Top Trigrams ---
+president united state: 1770
+obedt servt jefferson: 829
+united state america: 677
+esteem obedt servt: 435
+ditto ditto ditto: 435
+bank united state: 419
+friend servt jefferson: 415
+citizen united state: 407
+servt jefferson philadelphia: 397
+de etats unis: 384
+government united state: 383
+respect obedt servt: 369
+state new york: 326
+congress united state: 294
+debt united state: 274
+new york july: 270
+new york june: 269
+part united state: 265
+senate house representative: 246
+speaker house representative: 227
+Processing period: Adams Presidency (13571 letters)
+
+--- Adams Presidency Top Bigrams ---
+united state: 4233
+new york: 3247
+secretary war: 1092
+mount vernon: 1078
+john adam: 985
+major general: 921
+general hamilton: 721
+obedt servt: 713
+war department: 678
+president united: 612
+genl hamilton: 556
+james mchenry: 555
+every thing: 546
+quarter master: 526
+mer night: 486
+respect esteem: 460
+respect obedt: 455
+recruiting service: 452
+court martial: 428
+beg leave: 427
+
+--- Adams Presidency Top Trigrams ---
+president united state: 597
+major general hamilton: 449
+hamilton new york: 357
+washington mount vernon: 306
+major genl hamilton: 236
+respect obedt servt: 232
+james mchenry major: 219
+senate united state: 193
+new york june: 186
+respect obt servt: 180
+general court martial: 177
+general alexander hamilton: 173
+new york march: 166
+quarter master general: 161
+went away breakfast: 158
+pay master general: 157
+gentleman senate united: 155
+hble servt washington: 155
+friend servt jefferson: 155
+wind southerly mer: 152
+Processing period: Jefferson Presidency (29503 letters)
+
+--- Jefferson Presidency Top Bigrams ---
+united state: 12932
+new york: 4059
+new orleans: 2401
+department state: 2166
+james madison: 1739
+respect jefferson: 1651
+beg leave: 1566
+every thing: 1469
+president united: 1442
+secretary state: 1351
+fellow citizen: 1120
+esteem respect: 1096
+american vessel: 1074
+respect esteem: 1018
+obedt servt: 993
+highest respect: 983
+accept assurance: 929
+taken place: 928
+jefferson washington: 902
+que vous: 889
+
+--- Jefferson Presidency Top Trigrams ---
+president united state: 1435
+esteem respect jefferson: 720
+united state america: 545
+citizen united state: 539
+government united state: 532
+accept friendly salutation: 384
+assurance esteem respect: 379
+servt albert gallatin: 364
+respect jefferson washington: 363
+accept affectionate salutation: 359
+salutation assurance esteem: 352
+de etats unis: 351
+respect obedt servt: 320
+best wish jefferson: 315
+friendly salutation assurance: 315
+accept best wish: 314
+affectionate salutation jefferson: 294
+obedt servt albert: 273
+accept assurance high: 270
+respect obt servt: 247
+Processing period: Madison Presidency (15478 letters)
+
+--- Madison Presidency Top Bigrams ---
+united state: 6001
+new york: 1784
+john adam: 1408
+respect jefferson: 1316
+esteem respect: 1132
+accept assurance: 1004
+every thing: 997
+jefferson monticello: 988
+james madison: 964
+beg leave: 739
+secretary state: 696
+assurance esteem: 660
+president united: 657
+year ago: 580
+respect esteem: 546
+new england: 542
+best wish: 533
+new orleans: 523
+fellow citizen: 520
+last year: 516
+
+--- Madison Presidency Top Trigrams ---
+esteem respect jefferson: 831
+president united state: 655
+assurance esteem respect: 559
+respect jefferson monticello: 558
+accept assurance esteem: 461
+united state america: 383
+john adam quincy: 346
+respect james madison: 249
+friend john adam: 224
+accept assurance respect: 183
+citizen united state: 178
+assurance respect jefferson: 176
+messrs gibson jefferson: 159
+government united state: 153
+accept best wish: 152
+james madison president: 145
+thousand eight hundred: 140
+ever affectionately jefferson: 138
+john quincy adam: 130
+state new york: 128
+Processing period: Post-Madison (15445 letters)
+
+--- Post-Madison Top Bigrams ---
+united state: 1613
+new york: 1593
+john adam: 1323
+james madison: 1241
+respect jefferson: 1220
+accept assurance: 928
+esteem respect: 911
+jefferson monticello: 797
+thomas jefferson: 766
+university virginia: 747
+every thing: 687
+best wish: 674
+respect esteem: 533
+year ago: 531
+last year: 482
+john quincy: 474
+fellow citizen: 458
+assurance esteem: 458
+beg leave: 451
+quincy adam: 447
+
+--- Post-Madison Top Trigrams ---
+esteem respect jefferson: 545
+respect jefferson monticello: 477
+john quincy adam: 435
+assurance esteem respect: 328
+friendship respect jefferson: 305
+friend john adam: 280
+accept assurance esteem: 273
+respect james madison: 223
+director literary fund: 198
+accept assurance respect: 196
+president director literary: 192
+john adam quincy: 187
+visitor university virginia: 174
+james madison montpellier: 164
+thomas jefferson order: 162
+president united state: 160
+pray accept assurance: 155
+pleased accept assurance: 149
+ever affectionately jefferson: 148
+said john quincy: 147
+
+Summary of Top Bigrams by Period:
+             Colonial   Revolutionary War        Confederation Washington Presidency    Adams Presidency  Jefferson Presidency    Madison Presidency          Post-Madison
+0            new york        head quarter         united state          united state        united state          united state          united state          united state
+1            home day            new york             new york              new york            new york              new york              new york              new york
+2         little wind        united state           noon night    secretary treasury       secretary war           new orleans             john adam             john adam
+3   benjamin franklin  respect excellency         morning noon       secretary state        mount vernon      department state     respect jefferson         james madison
+4   george washington            que vous           muddy hole      president united           john adam         james madison        esteem respect     respect jefferson
+5         every thing         every thing         mount vernon  house representative       major general     respect jefferson      accept assurance      accept assurance
+6           went away           beg leave            dogue run           obedt servt    general hamilton             beg leave           every thing        esteem respect
+7          muddy hole    servt washington  thermometer morning       servt jefferson         obedt servt           every thing  jefferson monticello  jefferson monticello
+8        mount vernon         obedt servt             que vous   treasury department      war department      president united         james madison      thomas jefferson
+9     fort cumberland          west point          every thing           every thing    president united       secretary state             beg leave   university virginia
+10           doeg run    greatest respect      mercury morning          mount vernon       genl hamilton        fellow citizen       secretary state           every thing
+11     act parliament     commander chief      servt jefferson              per cent       james mchenry        esteem respect      assurance esteem             best wish
+12      spent evening       court martial            john adam             beg leave         every thing       american vessel      president united        respect esteem
+13        ditto ditto      quarter master           etats unis    alexander hamilton      quarter master        respect esteem              year ago              year ago
+14        new england    excellency obedt        state america        north carolina           mer night           obedt servt        respect esteem             last year
+15      franklin esqr        rhode island           night wind      attorney general      respect esteem       highest respect           new england           john quincy
+16         hble servt  commanding officer           hble servt       thousand dollar       respect obedt      accept assurance             best wish        fellow citizen
+17      craven street       major general          obedt servt       perfect respect  recruiting service           taken place           new orleans      assurance esteem
+18   servt washington          new jersey      jefferson paris        south carolina       court martial  jefferson washington        fellow citizen             beg leave
+19        post office       general court              day ago           taken place           beg leave              que vous             last year           quincy adam
+
+Summary of Top Trigrams by Period:
+                       Colonial            Revolutionary War             Confederation         Washington Presidency            Adams Presidency               Jefferson Presidency             Madison Presidency                   Post-Madison
+0       george washington paper         united state america        morning noon night        president united state      president united state             president united state       esteem respect jefferson       esteem respect jefferson
+1       ledger library congress      washington head quarter  thermometer morning noon         obedt servt jefferson      major general hamilton           esteem respect jefferson         president united state   respect jefferson monticello
+2       library congress george  greatest respect excellency      mercury morning noon          united state america           hamilton new york               united state america       assurance esteem respect               john quincy adam
+3    congress george washington        general court martial           noon night wind            esteem obedt servt     washington mount vernon               citizen united state   respect jefferson monticello       assurance esteem respect
+4       washington paper series                de etats unis      united state america             ditto ditto ditto         major genl hamilton            government united state        accept assurance esteem   friendship respect jefferson
+5        paper series financial         obt servt washington             de etats unis             bank united state         respect obedt servt         accept friendly salutation           united state america               friend john adam
+6        series financial paper       quarter master general          noon night clear        friend servt jefferson         james mchenry major           assurance esteem respect               john adam quincy        accept assurance esteem
+7         financial paper folio             head quarter new   washington mount vernon          citizen united state         senate united state              servt albert gallatin          respect james madison          respect james madison
+8         hble servt washington    respect esteem excellency        noon night morning  servt jefferson philadelphia               new york june       respect jefferson washington               friend john adam         director literary fund
+9        benjamin franklin esqr  addressed monsieur monsieur            run muddy hole                 de etats unis           respect obt servt     accept affectionate salutation       accept assurance respect       accept assurance respect
+10      general ledger ageneral     respect excellency obedt           dogue run muddy       government united state       general court martial        salutation assurance esteem           citizen united state    president director literary
+11       ledger ageneral ledger       obedt servt washington     servt jefferson paris           respect obedt servt  general alexander hamilton                      de etats unis    assurance respect jefferson               john adam quincy
+12      ageneral ledger library       excellency obedt servt        consul vice consul                state new york              new york march                respect obedt servt        messrs gibson jefferson    visitor university virginia
+13  addressed benjamin franklin        servt washington head          morng noon night         congress united state      quarter master general                best wish jefferson        government united state      james madison montpellier
+14          went away breakfast          quarter new windsor     hble servt washington             debt united state         went away breakfast      friendly salutation assurance               accept best wish         thomas jefferson order
+15             warm little wind             obedt hble servt          obedt hble servt                 new york july          pay master general                   accept best wish        james madison president         president united state
+16               home day alone                que vous avez             le etats unis                 new york june     gentleman senate united  affectionate salutation jefferson         thousand eight hundred          pray accept assurance
+17             obedt hble servt          head quarter middle          french dogue run             part united state       hble servt washington                 obedt servt albert  ever affectionately jefferson       pleased accept assurance
+18            ditto ditto ditto         quarter middle brook             que vous avez   senate house representative      friend servt jefferson              accept assurance high               john quincy adam  ever affectionately jefferson
+19               rid muddy hole     tres obeissant serviteur     obedt servt jefferson  speaker house representative          wind southerly mer                  respect obt servt                 state new york               said john quincy

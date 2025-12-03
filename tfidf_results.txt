@@ -1,0 +1,232 @@
+Checking NLTK data...
+Downloading wordnet...
+Downloading omw-1.4...
+Reading letters.jsonl...
+Processing letter 10000...
+Processing letter 20000...
+Processing letter 30000...
+Processing letter 40000...
+Processing letter 50000...
+Processing letter 60000...
+Processing letter 70000...
+Processing letter 80000...
+Processing letter 90000...
+Processing letter 100000...
+Processing letter 110000...
+Processing letter 120000...
+Processing letter 130000...
+Processing letter 140000...
+Processing letter 150000...
+Processing letter 160000...
+Processing letter 170000...
+Processing letter 180000...
+Preprocessing and computing TF...
+Processing period: Colonial (16161 letters)
+Processing period: Revolutionary War (48197 letters)
+Processing period: Confederation (17812 letters)
+Processing period: Washington Presidency (27161 letters)
+Processing period: Adams Presidency (13571 letters)
+Processing period: Jefferson Presidency (29503 letters)
+Processing period: Madison Presidency (15478 letters)
+Processing period: Post-Madison (15445 letters)
+Computing IDF...
+Computing TF-IDF and extracting top terms...
+
+--- Colonial ---
+doeg: 0.000235
+ageneral: 0.000162
+eund: 0.000137
+dismd: 0.000101
+patd: 0.000095
+empld: 0.000092
+dind: 0.000090
+waterson: 0.000090
+cravenstreet: 0.000087
+magowan: 0.000085
+hemphill: 0.000083
+mecom: 0.000082
+summs: 0.000073
+teedyuscung: 0.000072
+waggener: 0.000068
+thurdsday: 0.000066
+catchd: 0.000065
+stedlar: 0.000064
+rumney: 0.000063
+dhi: 0.000063
+
+--- Revolutionary War ---
+artaud: 0.000119
+middlebrook: 0.000112
+zullen: 0.000052
+tyonderoga: 0.000045
+sartine: 0.000040
+eenige: 0.000037
+peekskill: 0.000037
+pompton: 0.000036
+hazen: 0.000035
+billingsport: 0.000033
+preakness: 0.000033
+pcc: 0.000033
+neufville: 0.000032
+rimbert: 0.000032
+huddy: 0.000032
+zal: 0.000031
+dezelve: 0.000031
+ternay: 0.000030
+whitemarsh: 0.000030
+haverstraw: 0.000030
+
+--- Confederation ---
+dogue: 0.000244
+williamos: 0.000074
+deral: 0.000053
+mansn: 0.000048
+sjl: 0.000044
+tabacs: 0.000041
+shipton: 0.000041
+deslon: 0.000041
+grd: 0.000039
+doradour: 0.000039
+thulemeier: 0.000039
+farrand: 0.000038
+craik: 0.000037
+limozin: 0.000036
+callihan: 0.000035
+recordsmax: 0.000032
+fennish: 0.000031
+calonne: 0.000031
+plowed: 0.000030
+marqs: 0.000029
+
+--- Washington Presidency ---
+hamiltonsecy: 0.000109
+ustates: 0.000061
+assignats: 0.000047
+hamiltonsecretary: 0.000042
+jaudenes: 0.000038
+ischem: 0.000035
+chiappe: 0.000033
+clingman: 0.000031
+whitting: 0.000029
+genest: 0.000028
+muley: 0.000027
+montmorin: 0.000026
+viar: 0.000026
+slema: 0.000026
+fraunces: 0.000025
+suliman: 0.000023
+knoxsecy: 0.000023
+departmentjune: 0.000022
+congressdebates: 0.000021
+departmentseptember: 0.000020
+
+--- Adams Presidency ---
+subdistricts: 0.000102
+artillerists: 0.000065
+mchenry: 0.000060
+dittovice: 0.000060
+rivardi: 0.000059
+talleyrand: 0.000059
+bewell: 0.000056
+dittojohn: 0.000053
+subdistrict: 0.000053
+tousard: 0.000047
+hunewell: 0.000046
+oliv: 0.000045
+jacobin: 0.000044
+toussaint: 0.000043
+clingman: 0.000043
+hunnewell: 0.000042
+buonaparte: 0.000037
+dittowilliam: 0.000037
+meminger: 0.000037
+craik: 0.000034
+
+--- Jefferson Presidency ---
+pichon: 0.000113
+cevallos: 0.000104
+turreau: 0.000090
+reibelt: 0.000077
+osage: 0.000064
+yrujo: 0.000057
+ustates: 0.000055
+polygraph: 0.000055
+gallatin: 0.000053
+gavino: 0.000051
+canning: 0.000050
+fucus: 0.000049
+misipi: 0.000047
+cambrian: 0.000046
+folch: 0.000044
+natchitoches: 0.000044
+louisianian: 0.000043
+napoleon: 0.000041
+hashash: 0.000040
+laussat: 0.000038
+
+--- Madison Presidency ---
+napoleon: 0.000113
+batture: 0.000108
+merino: 0.000080
+correa: 0.000055
+gothenburg: 0.000053
+ticknor: 0.000043
+bonaparte: 0.000042
+bankhead: 0.000040
+nonag: 0.000037
+dallas: 0.000035
+bollandists: 0.000035
+gallatin: 0.000034
+madisonby: 0.000033
+dufief: 0.000032
+doyhar: 0.000032
+shaler: 0.000028
+sirwashington: 0.000027
+sirmontpelier: 0.000027
+piernet: 0.000027
+gravier: 0.000027
+
+--- Post-Madison ---
+dormitory: 0.000226
+dunglison: 0.000197
+montezillo: 0.000170
+bursar: 0.000166
+montpr: 0.000161
+brockenbrough: 0.000151
+raggi: 0.000090
+capitels: 0.000089
+ticknor: 0.000078
+bonnycastle: 0.000078
+correa: 0.000077
+trulybernard: 0.000072
+montpellier: 0.000072
+pini: 0.000070
+univty: 0.000065
+eorthan: 0.000064
+leitch: 0.000062
+respectth: 0.000059
+botta: 0.000052
+robley: 0.000052
+
+Summary of Top Terms by Period:
+        Colonial Revolutionary War Confederation Washington Presidency Adams Presidency Jefferson Presidency Madison Presidency   Post-Madison
+0           doeg            artaud         dogue          hamiltonsecy     subdistricts               pichon           napoleon      dormitory
+1       ageneral       middlebrook     williamos               ustates     artillerists             cevallos            batture      dunglison
+2           eund            zullen         deral             assignats          mchenry              turreau             merino     montezillo
+3          dismd        tyonderoga         mansn     hamiltonsecretary        dittovice              reibelt             correa         bursar
+4           patd           sartine           sjl              jaudenes          rivardi                osage         gothenburg         montpr
+5          empld            eenige        tabacs                ischem       talleyrand                yrujo            ticknor  brockenbrough
+6           dind         peekskill       shipton               chiappe           bewell              ustates          bonaparte          raggi
+7       waterson           pompton        deslon              clingman        dittojohn            polygraph           bankhead       capitels
+8   cravenstreet             hazen           grd              whitting      subdistrict             gallatin              nonag        ticknor
+9        magowan      billingsport      doradour                genest          tousard               gavino             dallas    bonnycastle
+10      hemphill         preakness    thulemeier                 muley         hunewell              canning        bollandists         correa
+11         mecom               pcc       farrand             montmorin             oliv                fucus           gallatin   trulybernard
+12         summs         neufville         craik                  viar          jacobin               misipi          madisonby    montpellier
+13   teedyuscung           rimbert       limozin                 slema        toussaint             cambrian             dufief           pini
+14      waggener             huddy      callihan              fraunces         clingman                folch             doyhar         univty
+15     thurdsday               zal    recordsmax               suliman        hunnewell         natchitoches             shaler        eorthan
+16        catchd           dezelve       fennish              knoxsecy       buonaparte          louisianian      sirwashington         leitch
+17       stedlar            ternay       calonne        departmentjune     dittowilliam             napoleon      sirmontpelier      respectth
+18        rumney        whitemarsh        plowed       congressdebates         meminger              hashash            piernet          botta
+19           dhi        haverstraw         marqs   departmentseptember            craik              laussat            gravier         robley

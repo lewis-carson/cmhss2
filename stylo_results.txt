@@ -1,0 +1,80 @@
+Checking NLTK data...
+Reading letters.jsonl...
+Processing letter 10000...
+Processing letter 20000...
+Processing letter 30000...
+Processing letter 40000...
+Processing letter 50000...
+Processing letter 60000...
+Processing letter 70000...
+Processing letter 80000...
+Processing letter 90000...
+Processing letter 100000...
+Processing letter 110000...
+Processing letter 120000...
+Processing letter 130000...
+Processing letter 140000...
+Processing letter 150000...
+Processing letter 160000...
+Processing letter 170000...
+Processing letter 180000...
+Computing Stylometric Metrics...
+
+--- Colonial ---
+Letters: 16151
+Avg Word Length: 4.3915
+Avg Sentence Length: 18.8082
+Yule's K (Richness): 93.1069
+
+--- Revolutionary War ---
+Letters: 48188
+Avg Word Length: 4.4624
+Avg Sentence Length: 26.4350
+Yule's K (Richness): 96.3815
+
+--- Confederation ---
+Letters: 17810
+Avg Word Length: 4.4284
+Avg Sentence Length: 21.7188
+Yule's K (Richness): 97.4350
+
+--- Washington Presidency ---
+Letters: 27156
+Avg Word Length: 4.5101
+Avg Sentence Length: 23.0246
+Yule's K (Richness): 119.5113
+
+--- Adams Presidency ---
+Letters: 13570
+Avg Word Length: 4.4935
+Avg Sentence Length: 23.5486
+Yule's K (Richness): 109.1949
+
+--- Jefferson Presidency ---
+Letters: 29499
+Avg Word Length: 4.5148
+Avg Sentence Length: 24.0229
+Yule's K (Richness): 110.6523
+
+--- Madison Presidency ---
+Letters: 15477
+Avg Word Length: 4.4787
+Avg Sentence Length: 26.5291
+Yule's K (Richness): 106.8113
+
+--- Post-Madison ---
+Letters: 15445
+Avg Word Length: 4.4692
+Avg Sentence Length: 26.1361
+Yule's K (Richness): 109.5597
+
+Summary of Stylometric Analysis by Period:
+                       Letters  Avg Word Len  Avg Sent Len    Yule's K
+Colonial                 16151      4.391527     18.808185   93.106943
+Revolutionary War        48188      4.462394     26.434988   96.381491
+Confederation            17810      4.428407     21.718817   97.435042
+Washington Presidency    27156      4.510122     23.024589  119.511263
+Adams Presidency         13570      4.493454     23.548622  109.194895
+Jefferson Presidency     29499      4.514814     24.022942  110.652281
+Madison Presidency       15477      4.478744     26.529063  106.811335
+Post-Madison             15445      4.469239     26.136112  109.559735
