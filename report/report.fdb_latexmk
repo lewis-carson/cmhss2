@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1764777084.27886 "report.xdv" "report.pdf" "report" 1764777093.81105 0
-  "report.xdv" 1764777084.23804 345720 ba8becd4d207ed671dc06f410bb3e047 "xelatex"
+["xdvipdfmx"] 1764864710.60668 "report.xdv" "report.pdf" "report" 1764864719.57633 0
+  "report.xdv" 1764864710.57172 284232 391e3f731262c1fe86dee9c705d34361 "xelatex"
   (generated)
   "report.pdf"
   (rewritten before read)
-["xelatex"] 1764777083.56877 "/Users/lewis/projects/cmhss2/report/report.tex" "report.xdv" "report" 1764777093.81006 0
+["xelatex"] 1764864709.99445 "/Users/lewis/projects/cmhss2/report/report.tex" "report.xdv" "report" 1764864719.57551 0
   "../network_Adams_Presidency.png" 1764776867.14926 1623863 3910292755a411955a4d88b624a74736 ""
   "../network_Colonial.png" 1764776865.35776 1401942 2838bea47d3f7d7eb7be75b41960596b ""
   "../network_Confederation.png" 1764776866.34174 2117499 ec1fe847db71daa74699a377a51919b9 ""
@@ -13,7 +13,7 @@
   "../network_Post-Madison.png" 1764776868.26139 1939324 b0a88ae22ceaf2ba4f9bd3d245ec910b ""
   "../network_Revolutionary_War.png" 1764776865.88209 2595061 30048609674516bf0a2a82c243e71516 ""
   "../network_Washington_Presidency.png" 1764776866.78617 2099639 e38acfa0340e304edf79d4437a097d05 ""
-  "/Users/lewis/projects/cmhss2/report/report.tex" 1764777082.58178 41336 bf60133a22387ebaf349b46d70f130b0 ""
+  "/Users/lewis/projects/cmhss2/report/report.tex" 1764864709.06367 34940 6e9ee4674e5ac57c2b7dc2e5dbf83bc5 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm" 1600636029 3008 ca0c83ca288d9f1c5d2fca0e8e268f10 ""
@@ -118,9 +118,9 @@
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/web2c/xetex/xelatex.fmt" 1752398475 5639809 eba306b3b91a566ed5cd8e80ca26319a ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "report.aux" 1764777084.23737 3687 fcffd848c6299be7253f99d4642c948c "xelatex"
-  "report.out" 1764777084.23787 1453 1297de3067896a5c7ea4092a186b9c49 "xelatex"
-  "report.tex" 1764777082.58178 41336 bf60133a22387ebaf349b46d70f130b0 ""
+  "report.aux" 1764864710.57103 3200 d75e7b74af89cf6be50bbaad9972b618 "xelatex"
+  "report.out" 1764864710.57157 1591 1cd44cf1c6156afd28209b41c5fee052 "xelatex"
+  "report.tex" 1764864709.06367 34940 6e9ee4674e5ac57c2b7dc2e5dbf83bc5 ""
   (generated)
   "report.aux"
   "report.log"

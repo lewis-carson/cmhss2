@@ -1,14 +1,13 @@
 import json
-import math
 import re
-import sys
 from collections import Counter, defaultdict
 from datetime import datetime
 import nltk
+import pandas as pd
 
-# Download necessary NLTK data
 print("Checking NLTK data...")
 required_nltk_resources = ['punkt', 'punkt_tab']
+
 for resource in required_nltk_resources:
     try:
         if resource == 'punkt' or resource == 'punkt_tab':
@@ -23,13 +22,10 @@ for resource in required_nltk_resources:
             print(f"Warning: Could not download {resource}: {e}")
 
 def get_period(date_str):
-    """
-    Determines the historical period based on the date string.
-    """
     if not date_str:
         return None
     try:
-        # Handle partial dates if necessary, but assuming YYYY-MM-DD based on sample
+        # partial dates if necessary
         if len(date_str) == 4:
             dt = datetime(int(date_str), 1, 1)
         elif len(date_str) == 7:
@@ -39,7 +35,7 @@ def get_period(date_str):
     except ValueError:
         return None
     
-    # Define period boundaries
+    # period boundaries
     if dt < datetime(1775, 4, 19):
         return "Colonial"
     elif dt <= datetime(1783, 9, 3):
@@ -58,12 +54,6 @@ def get_period(date_str):
         return "Post-Madison"
 
 def get_yules_k(token_counts, total_words):
-    """
-    Calculates Yule's K measure of vocabulary richness.
-    K = 10^4 * (S2 - S1) / (S1^2)
-    where S1 = total words (N)
-    S2 = sum(m^2 * Vm), where Vm is number of words appearing m times
-    """
     N = total_words
     if N == 0:
         return 0
@@ -81,7 +71,7 @@ def get_yules_k(token_counts, total_words):
 def main():
     input_file = 'letters.jsonl'
     
-    # Data structures to aggregate stats per period
+    # data structures to aggregate stats period stats
     period_stats = defaultdict(lambda: {
         'total_chars': 0,
         'total_words': 0,
@@ -103,12 +93,12 @@ def main():
                     
                     period = get_period(date_str)
                     if period and content:
-                        # Tokenize sentences
+                        # tokenize sentences
                         sentences = nltk.sent_tokenize(content)
                         num_sentences = len(sentences)
                         
-                        # Tokenize words (simple regex to extract words, ignoring punctuation)
-                        # Lowercase for vocabulary counts
+                        # tokenize words
+                        # lowercase for vocabulary counts
                         words = re.findall(r'\b[a-z]+\b', content.lower())
                         num_words = len(words)
                         
@@ -133,7 +123,6 @@ def main():
 
     print("Computing Stylometric Metrics...")
     
-    # Order of periods for consistent output
     ordered_periods = [
         "Colonial", "Revolutionary War", "Confederation", 
         "Washington Presidency", "Adams Presidency", "Jefferson Presidency", 
@@ -162,26 +151,19 @@ def main():
             "Yule's K": yules_k
         }
         
-        print(f"\n--- {period} ---")
-        print(f"Letters: {stats['doc_count']}")
-        print(f"Avg Word Length: {avg_word_len:.4f}")
-        print(f"Avg Sentence Length: {avg_sent_len:.4f}")
-        print(f"Yule's K (Richness): {yules_k:.4f}")
+    print(f"\n--- {period} ---")
+    print(f"Letters: {stats['doc_count']}")
+    print(f"Avg Word Length: {avg_word_len:.4f}")
+    print(f"Avg Sentence Length: {avg_sent_len:.4f}")
+    print(f"Yule's K (Richness): {yules_k:.4f}")
 
-    # Display results using Pandas for better formatting if available
-    try:
-        import pandas as pd
-        print("\nSummary of Stylometric Analysis by Period:")
-        
-        df = pd.DataFrame.from_dict(results, orient='index')
-        # Reorder rows
-        df = df.reindex(ordered_periods)
-        # Drop rows with NaN (periods not found)
-        df = df.dropna()
-        
-        print(df.to_string())
-    except ImportError:
-        pass
+    print("\nSummary of Stylometric Analysis by Period:")
+    
+    df = pd.DataFrame.from_dict(results, orient='index')
+    df = df.reindex(ordered_periods)
+    df = df.dropna()
+    
+    print(df.to_string())
 
 if __name__ == "__main__":
     main()

@@ -1,21 +1,17 @@
 import json
 import networkx as nx
 import matplotlib.pyplot as plt
-from matplotlib.patches import FancyArrowPatch
 import numpy as np
-import os
 
 def draw_period_network(period_name, edges, output_filename):
     print(f"Drawing network for {period_name}...")
     
-    # Create directed graph
     G = nx.DiGraph()
-
-    # Add edges with weights
+    
     for edge in edges:
         G.add_edge(edge['from'], edge['to'], weight=edge['count'])
 
-    # Calculate statistics
+    # statistics
     num_nodes = G.number_of_nodes()
     num_edges = G.number_of_edges()
     if num_nodes > 1:
@@ -38,14 +34,14 @@ def draw_period_network(period_name, edges, output_filename):
         print("  Skipping empty network")
         return
 
-    # Filter for top 50 nodes by degree (reduced from 100 for cleaner period plots)
+    # top 50
     top_nodes = sorted(G.degree, key=lambda x: x[1], reverse=True)[:50]
     top_nodes_set = {node for node, degree in top_nodes}
     G = G.subgraph(top_nodes_set)
 
     print(f"  Filtered: {len(G.nodes())} nodes")
 
-    # Create the visualization
+    # vis
     plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.sans-serif'] = ['Helvetica', 'Arial', 'DejaVu Sans']
 
@@ -55,18 +51,15 @@ def draw_period_network(period_name, edges, output_filename):
     ax.axis('off')
     ax.set_title(f"{period_name}", fontsize=20, pad=20)
 
-    # Calculate circular layout
-    # Sort nodes by degree to group important ones
+    # circular layout
     nodes = sorted(list(G.nodes()), key=lambda n: G.degree(n), reverse=True)
     n_nodes = len(nodes)
     node_angles = {node: 2 * np.pi * i / n_nodes for i, node in enumerate(nodes)}
     radius = 1.0
 
-    # Helper to get cartesian coordinates
     def get_coords(angle, r):
         return r * np.cos(angle), r * np.sin(angle)
 
-    # Draw edges as Bezier curves (chords)
     from matplotlib.path import Path
     import matplotlib.patches as patches
 
@@ -96,7 +89,7 @@ def draw_period_network(period_name, edges, output_filename):
                                   edgecolor='#CFD8DC', alpha=0.6)
         ax.add_patch(patch)
 
-    # Draw nodes
+    # draw
     node_sizes = [G.degree(node) for node in nodes]
     max_degree = max(node_sizes) if node_sizes else 1
 
@@ -104,17 +97,17 @@ def draw_period_network(period_name, edges, output_filename):
         angle = node_angles[node]
         x, y = get_coords(angle, radius)
         
-        # Size relative to degree
+        # size to degree
         size = 100 + (G.degree(node) / max_degree * 500)
         
         ax.scatter([x], [y], s=size, c='#FF6B6B', edgecolors='white', linewidth=1.5, zorder=10)
         
-        # Add labels for high degree nodes
-        if G.degree(node) > max_degree * 0.1: # Label top 10% roughly
-            # Calculate label position slightly outside
+        # add labels for high degree nodes
+        if G.degree(node) > max_degree * 0.1: # top 10% roughly
+            # calculate label position slightly outside
             label_x, label_y = get_coords(angle, radius * 1.08)
             
-            # Determine alignment based on position
+            # alignment based on position
             rotation = np.degrees(angle)
             if x > 0:
                 ha = 'left'
@@ -124,7 +117,6 @@ def draw_period_network(period_name, edges, output_filename):
                 ha = 'right'
                 label_x -= 0.02
             
-            # Simple label placement
             ax.text(label_x, label_y, node.split(',')[0], ha=ha, va='center', fontsize=9, fontweight='bold')
 
     plt.tight_layout()
@@ -132,11 +124,9 @@ def draw_period_network(period_name, edges, output_filename):
     plt.close()
     print(f"  Saved to {output_filename}")
 
-# Load the network data
 with open('network_per_period.json', 'r') as f:
     period_data = json.load(f)
 
-# Define period order for consistent processing
 periods = [
     "Colonial", "Revolutionary War", "Confederation", 
     "Washington Presidency", "Adams Presidency", 

@@ -4,13 +4,10 @@ from itertools import product
 from datetime import datetime
 
 def get_period(date_str):
-    """
-    Determines the historical period based on the date string.
-    """
     if not date_str:
         return None
     try:
-        # Handle partial dates if necessary
+        # partial dates
         if len(date_str) == 4:
             dt = datetime(int(date_str), 1, 1)
         elif len(date_str) == 7:
@@ -20,7 +17,7 @@ def get_period(date_str):
     except ValueError:
         return None
     
-    # Define period boundaries
+    # boundaries
     if dt < datetime(1775, 4, 19):
         return "Colonial"
     elif dt <= datetime(1783, 9, 3):
@@ -39,22 +36,15 @@ def get_period(date_str):
         return "Post-Madison"
 
 def extract_network(metadata_file, output_file):
-    """
-    Extract a network of from:to connections between senders and recipients
-    from the founders online metadata, grouped by period.
-    """
-    
-    # Load metadata
     print(f"Loading metadata from {metadata_file}...")
     with open(metadata_file, 'r') as f:
         metadata = json.load(f)
     
-    # Dictionary to store connections with counts per period
-    # Structure: { period: { "author -> recipient": count } }
     period_connections = defaultdict(lambda: defaultdict(int))
     
     print("Processing documents...")
-    # Extract connections from each document
+    
+    # extract connections
     for doc in metadata:
         authors = doc.get('authors', [])
         recipients = doc.get('recipients', [])
@@ -64,12 +54,11 @@ def extract_network(metadata_file, output_file):
         if not period:
             continue
 
-        # Create connections from each author to each recipient
+        # create connections from author to recipient
         for author, recipient in product(authors, recipients):
             connection = f"{author} -> {recipient}"
             period_connections[period][connection] += 1
     
-    # Convert to list of dictionaries for better structure
     final_output = {}
     
     for period, connections in period_connections.items():
@@ -84,7 +73,6 @@ def extract_network(metadata_file, output_file):
         final_output[period] = network
         print(f"Period {period}: {len(network)} unique connections")
 
-    # Save network
     print(f"Saving networks to {output_file}...")
     with open(output_file, 'w') as f:
         json.dump(final_output, f, indent=2)

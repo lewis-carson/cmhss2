@@ -1,15 +1,13 @@
 import json
 import re
-import sys
 from collections import Counter, defaultdict
 from datetime import datetime
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.util import ngrams
-
-# Download necessary NLTK data
-print("Checking NLTK data...")
+import pandas as pd
+        
 required_nltk_resources = ['punkt', 'stopwords', 'wordnet', 'omw-1.4', 'punkt_tab']
 for resource in required_nltk_resources:
     try:
@@ -25,13 +23,10 @@ for resource in required_nltk_resources:
             print(f"Warning: Could not download {resource}: {e}")
 
 def get_period(date_str):
-    """
-    Determines the historical period based on the date string.
-    """
     if not date_str:
         return None
     try:
-        # Handle partial dates if necessary, but assuming YYYY-MM-DD based on sample
+        # partial dates if necessary
         if len(date_str) == 4:
             dt = datetime(int(date_str), 1, 1)
         elif len(date_str) == 7:
@@ -41,7 +36,7 @@ def get_period(date_str):
     except ValueError:
         return None
     
-    # Define period boundaries
+    # period boundaries
     if dt < datetime(1775, 4, 19):
         return "Colonial"
     elif dt <= datetime(1783, 9, 3):
@@ -60,25 +55,18 @@ def get_period(date_str):
         return "Post-Madison"
 
 def preprocess_text(text, lemmatizer, stop_words):
-    """
-    Tokenizes, removes stopwords, and lemmatizes the text.
-    """
-    # Lowercase
     text = text.lower()
-    # Replace non-alphabetic characters with spaces to prevent merging (e.g. "Hamilton-Secy")
     text = re.sub(r'[^a-z\s]', ' ', text)
-    # Tokenize (simple split is faster and sufficient for this scale)
     tokens = text.split() 
-    # Remove stopwords and lemmatize
     return [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words and len(word) > 2]
 
 def main():
     input_file = 'letters.jsonl'
     
-    # Initialize NLTK tools
     lemmatizer = WordNetLemmatizer()
     stop_words = set(stopwords.words('english'))
-    # Add some period-specific or common archaic stopwords/noise
+    
+    # period-specific or common archaic stopwords/noise
     stop_words.update([
         'thou', 'thee', 'thy', 'hath', 'would', 'could', 'should', 'may', 'might', 'must', 'shall', 'will', 
         'one', 'two', 'much', 'many', 'time', 'letter', 'sir', 'esq', 'mr', 'mrs', 'dear', 'humble', 'servant',
@@ -110,7 +98,6 @@ def main():
 
     print("Generating N-grams...")
     
-    # Order of periods for consistent output
     ordered_periods = [
         "Colonial", "Revolutionary War", "Confederation", 
         "Washington Presidency", "Adams Presidency", "Jefferson Presidency", 
@@ -125,21 +112,21 @@ def main():
             continue
             
         print(f"Processing period: {period} ({len(period_docs[period])} letters)")
-        # Combine all text for the period
+        # combine period
         full_text = " ".join(period_docs[period])
         
-        # Preprocess
+        # preprocess
         tokens = preprocess_text(full_text, lemmatizer, stop_words)
         
         if not tokens:
             continue
 
-        # Generate Bigrams
+        # bigrams
         bigram_counts = Counter(ngrams(tokens, 2))
         top_bigrams = bigram_counts.most_common(20)
         results_bigrams[period] = top_bigrams
         
-        # Generate Trigrams
+        # trigrams
         trigram_counts = Counter(ngrams(tokens, 3))
         top_trigrams = trigram_counts.most_common(20)
         results_trigrams[period] = top_trigrams
@@ -152,28 +139,22 @@ def main():
         for tg, count in top_trigrams:
             print(f"{' '.join(tg)}: {count}")
 
-    # Display results using Pandas for better formatting if available
-    try:
-        import pandas as pd
-        
-        print("\nSummary of Top Bigrams by Period:")
-        data_bg = {}
-        for period in ordered_periods:
-            if period in results_bigrams:
-                data_bg[period] = [" ".join(bg) for bg, count in results_bigrams[period]]
-        df_bg = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in data_bg.items() ]))
-        print(df_bg.to_string())
+    print("\nSummary of Top Bigrams by Period:")
+    data_bg = {}
+    for period in ordered_periods:
+        if period in results_bigrams:
+            data_bg[period] = [" ".join(bg) for bg, count in results_bigrams[period]]
+    df_bg = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in data_bg.items() ]))
+    print(df_bg.to_string())
 
-        print("\nSummary of Top Trigrams by Period:")
-        data_tg = {}
-        for period in ordered_periods:
-            if period in results_trigrams:
-                data_tg[period] = [" ".join(tg) for tg, count in results_trigrams[period]]
-        df_tg = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in data_tg.items() ]))
-        print(df_tg.to_string())
+    print("\nSummary of Top Trigrams by Period:")
+    data_tg = {}
+    for period in ordered_periods:
+        if period in results_trigrams:
+            data_tg[period] = [" ".join(tg) for tg, count in results_trigrams[period]]
+    df_tg = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in data_tg.items() ]))
+    print(df_tg.to_string())
         
-    except ImportError:
-        pass
 
 if __name__ == "__main__":
     main()

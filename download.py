@@ -1,12 +1,4 @@
-#!/usr/bin/env python3
-"""
-Download letters from the Founders Online API.
-Uses the metadata file to get document references and downloads the full content.
-Appends to a single JSON file and can resume from the last downloaded document.
-"""
-
 import json
-import os
 import sys
 from pathlib import Path
 import urllib.request
@@ -14,53 +6,40 @@ import urllib.error
 from typing import Optional
 import time
 
-# API base URL
 API_BASE = "https://founders.archives.gov/API/docdata/"
 METADATA_FILE = "founders-online-metadata.json"
 OUTPUT_FILE = "letters.jsonl"
 CHECKPOINT_FILE = "download_checkpoint.json"
 
 def load_checkpoint() -> dict:
-    """Load the checkpoint to resume from the last downloaded document."""
     if Path(CHECKPOINT_FILE).exists():
         try:
             with open(CHECKPOINT_FILE, 'r') as f:
                 return json.load(f)
         except Exception as e:
             print(f"Warning: Could not load checkpoint: {e}")
+   
     return {"last_index": -1, "successful": 0, "failed": 0}
 
 def save_checkpoint(index: int, successful: int, failed: int):
-    """Save the current progress."""
     checkpoint = {
         "last_index": index,
         "successful": successful,
         "failed": failed
     }
+    
     with open(CHECKPOINT_FILE, 'w') as f:
         json.dump(checkpoint, f)
 
 def extract_doc_id(permalink: str) -> str:
-    """
-    Extract document ID from permalink URL.
-    Example: https://founders.archives.gov/documents/Adams/01-01-02-0001-0001-0001
-    Returns: Adams/01-01-02-0001-0001-0001
-    """
     if "/documents/" in permalink:
         return permalink.split("/documents/")[1]
+    
     return None
 
 def fetch_letter(doc_id: str) -> Optional[dict]:
-    """
-    Fetch a single letter from the API.
-    
-    Args:
-        doc_id: Document ID in format "Project/number-number-..."
-        
-    Returns:
-        Dictionary with letter data or None if request fails
-    """
     url = f"{API_BASE}{doc_id}"
+    
     try:
         with urllib.request.urlopen(url, timeout=10) as response:
             return json.loads(response.read().decode())
@@ -72,24 +51,15 @@ def fetch_letter(doc_id: str) -> Optional[dict]:
         return None
 
 def append_letter_to_file(content: dict):
-    """
-    Append a letter to the output file in JSONL format.
-    
-    Args:
-        content: Letter content dictionary
-    """
     with open(OUTPUT_FILE, 'a') as f:
         f.write(json.dumps(content) + '\n')
 
 def main():
-    """Main function to download all letters."""
-    # Load checkpoint to resume
     checkpoint = load_checkpoint()
     start_index = checkpoint["last_index"] + 1
     successful = checkpoint["successful"]
     failed = checkpoint["failed"]
     
-    # Load metadata
     print(f"Loading metadata from {METADATA_FILE}...")
     try:
         with open(METADATA_FILE, 'r') as f:
@@ -111,7 +81,7 @@ def main():
         print(f"Resuming from document {start_index}")
         print(f"Previous progress: {successful} successful, {failed} failed")
     
-    # Download letters
+    # download letters
     for idx in range(start_index, len(metadata)):
         if idx % 100 == 0:
             print(f"Progress: {idx}/{len(metadata)} (Successful: {successful}, Failed: {failed})")
@@ -132,7 +102,6 @@ def main():
             save_checkpoint(idx, successful, failed)
             continue
         
-        # Fetch from API
         letter_data = fetch_letter(doc_id)
         if letter_data:
             append_letter_to_file(letter_data)
@@ -140,11 +109,9 @@ def main():
         else:
             failed += 1
         
-        # Save checkpoint every 10 documents
         if idx % 10 == 0:
             save_checkpoint(idx, successful, failed)
         
-        # Rate limiting - be respectful to the API
         if idx % 10 == 0:
             time.sleep(0.1)
     

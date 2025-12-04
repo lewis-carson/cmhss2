@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.7.13)  3 DEC 2025 15:51
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.7.13)  4 DEC 2025 16:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -752,146 +752,125 @@ LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/b/n' will be
 
 
 [1]
-Overfull \hbox (128.20715pt too wide) in paragraph at lines 93--94
-[]\TU/TeXGyreTermesX(0)/m/n/12 After the remote harvest completed, the resulting raw files (\TU/lmtt/m/n/12 letters.jsonl\TU/TeXGyreTermesX(0)/m/n/12 , \TU/lmtt/m/n/12 founders-online-metadata.json\TU/TeXGyreTermesX(0)/m/n/12 )
- []
-
-
-Overfull \hbox (61.75612pt too wide) in paragraph at lines 98--99
-[]\TU/TeXGyreTermesX(0)/m/n/12 Securely copying data to the local machine: \TU/lmtt/m/n/12 scp user@hamilton:/scratch/user/letters.jsonl
- []
-
-
-Overfull \hbox (40.50415pt too wide) in paragraph at lines 104--105
+Overfull \hbox (40.50415pt too wide) in paragraph at lines 96--97
 []\TU/TeXGyreTermesX(0)/m/n/12 Dependencies: Core Python packages used include \TU/lmtt/m/n/12 nltk\TU/TeXGyreTermesX(0)/m/n/12 , \TU/lmtt/m/n/12 pandas\TU/TeXGyreTermesX(0)/m/n/12 , \TU/lmtt/m/n/12 networkx\TU/TeXGyreTermesX(0)/m/n/12 , and \TU/lmtt/m/n/12 scikit-learn\TU/TeXGyreTermesX(0)/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+
  []
 
 
 
 [2]
-Overfull \hbox (11.27213pt too wide) in paragraph at lines 115--116
-\TU/TeXGyreTermesX(0)/m/n/12 explicit instructions for installation and replication: package installation (e.g., \TU/lmtt/m/n/12 pip install
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 122--123
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
-
- []
-
-
-Overfull \hbox (2.57216pt too wide) in paragraph at lines 131--132
+Overfull \hbox (2.57216pt too wide) in paragraph at lines 120--121
 \TU/TeXGyreTermesX(0)/m/n/12 Adams Presidency (1797–1801), Jefferson Presidency (1801–1809), Madison Presidency (1809–
  []
 
-
-
-[3]
-LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 142.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/newtx/ot1minntx.fd
+LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 131.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/newtx/ot1minntx.fd
 File: ot1minntx.fd 2023/09/09 v1.1 font definition file for OT1/minntx
 )
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 12.0pt on input line 142.
+(Font)              scaled to size 12.0pt on input line 131.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `minntx' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 8.8pt on input line 142.
+(Font)              scaled to size 8.8pt on input line 131.
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 6.6pt on input line 142.
+(Font)              scaled to size 6.6pt on input line 131.
 LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 12.0pt on input line 142.
+(Font)              scaled to size 12.0pt on input line 131.
 LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 8.8pt on input line 142.
+(Font)              scaled to size 8.8pt on input line 131.
 LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 6.6pt on input line 142.
+(Font)              scaled to size 6.6pt on input line 131.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 12.0pt on input line 142.
+(Font)              scaled to size 12.0pt on input line 131.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 8.8pt on input line 142.
+(Font)              scaled to size 8.8pt on input line 131.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 6.6pt on input line 142.
+(Font)              scaled to size 6.6pt on input line 131.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 12.0pt on input line 142.
+(Font)              scaled to size 12.0pt on input line 131.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 8.8pt on input line 142.
+(Font)              scaled to size 8.8pt on input line 131.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 6.6pt on input line 142.
-LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 142.
+(Font)              scaled to size 6.6pt on input line 131.
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 131.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2024/04/09 Fontinst v1.933 font definitions for U/ntxmia.
 )
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 12.0pt on input line 142.
+(Font)              scaled to size 12.0pt on input line 131.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 8.8pt on input line 142.
+(Font)              scaled to size 8.8pt on input line 131.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.6pt on input line 142.
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 142.
+(Font)              scaled to size 6.6pt on input line 131.
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 131.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 12.0pt on input line 142.
+(Font)              scaled to size 12.0pt on input line 131.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 8.8pt on input line 142.
+(Font)              scaled to size 8.8pt on input line 131.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.6pt on input line 142.
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 142.
+(Font)              scaled to size 6.6pt on input line 131.
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 131.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 12.0pt on input line 142.
+(Font)              scaled to size 12.0pt on input line 131.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 8.8pt on input line 142.
+(Font)              scaled to size 8.8pt on input line 131.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.6pt on input line 142.
+(Font)              scaled to size 6.6pt on input line 131.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 12.0pt on input line 142.
+(Font)              scaled to size 12.0pt on input line 131.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 8.8pt on input line 142.
+(Font)              scaled to size 8.8pt on input line 131.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.6pt on input line 142.
+(Font)              scaled to size 6.6pt on input line 131.
 
-Overfull \hbox (2.94412pt too wide) in paragraph at lines 159--160
+
+[3]
+Overfull \hbox (2.94412pt too wide) in paragraph at lines 148--149
 \TU/TeXGyreTermesX(0)/m/n/12 This project deliberately integrates network analysis with linguistic techniques (TF-IDF, n-grams,
  []
 
 
 
 [4]
-
-[5]
 File: ../network_Colonial.png Graphic file (type bmp)
 <../network_Colonial.png>
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 203.
+(Font)              scaled to size 10.95pt on input line 172.
 File: ../network_Revolutionary_War.png Graphic file (type bmp)
 <../network_Revolutionary_War.png>
 File: ../network_Confederation.png Graphic file (type bmp)
 <../network_Confederation.png>
 File: ../network_Washington_Presidency.png Graphic file (type bmp)
 <../network_Washington_Presidency.png>
-
-
-[6]
 File: ../network_Adams_Presidency.png Graphic file (type bmp)
 <../network_Adams_Presidency.png>
 File: ../network_Jefferson_Presidency.png Graphic file (type bmp)
@@ -902,6 +881,15 @@ File: ../network_Post-Madison.png Graphic file (type bmp)
 <../network_Post-Madison.png>
 
 
+[5]
+
+[6]
+Overfull \hbox (5.35214pt too wide) in paragraph at lines 239--240
+[]\TU/TeXGyreTermesX(0)/b/n/12 Washington Presidency (1789–1797): \TU/TeXGyreTermesX(0)/m/n/12 The language becomes administrative and Durham
+ []
+
+
+
 [7]
 
 [8]
@@ -909,40 +897,31 @@ File: ../network_Post-Madison.png Graphic file (type bmp)
 [9]
 
 [10]
-
-[11]
-Overfull \hbox (0.68013pt too wide) in paragraph at lines 323--324
-[]\TU/TeXGyreTermesX(0)/b/n/12 Statistical checks\TU/TeXGyreTermesX(0)/m/n/12 : Where appropriate, metrics such as average sentence length and Yule’s
- []
-
-
-
-[12]
-
-[13]
-Underfull \hbox (badness 7397) in paragraph at lines 360--361
+Underfull \hbox (badness 7397) in paragraph at lines 312--313
 []\TU/TeXGyreTermesX(0)/m/n/12 Bird, S., Loper, E., & Klein, E. (2009). Natural Language Toolkit (NLTK).
  []
 
 
 
-[14]
+[11]
 
-[15] (./report.aux)
+[12]
+
+[13] (./report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 1297DE3067896A5C7EA4092A186B9C49;1453.
+(rerunfilecheck)             Checksum: 1CD44CF1C6156AFD28209B41C5FEE052;1591.
  ) 
 Here is how much of TeX's memory you used:
  19785 strings out of 473832
  363522 string characters out of 5729481
- 921912 words of memory out of 5000000
+ 925001 words of memory out of 5000000
  42586 multiletter control sequences out of 15000+600000
  571284 words of font info for 82 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 80i,11n,117p,1303b,646s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,11n,117p,1039b,646s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.xdv (16 pages, 345720 bytes).
+Output written on report.xdv (14 pages, 284232 bytes).
