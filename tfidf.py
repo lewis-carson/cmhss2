@@ -7,8 +7,9 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-print("Checking NLTK data...")
 required_nltk_resources = ['punkt', 'stopwords', 'wordnet', 'omw-1.4', 'punkt_tab']
 for resource in required_nltk_resources:
     try:
@@ -172,6 +173,41 @@ def main():
     
     df = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in data.items() ]))
     print(df.to_string())
+
+    heatmap_terms = set()
+    for period in ordered_periods:
+        if period in results:
+            # Get top 5 terms
+            top_5 = [term for term, score in results[period][:5]]
+            heatmap_terms.update(top_5)
+            
+    heatmap_terms = sorted(list(heatmap_terms))
+    
+    heatmap_data = []
+    for term in heatmap_terms:
+        row = []
+        for period in ordered_periods:
+            if period in period_tf:
+                if term in period_tf[period]:
+                    score = period_tf[period][term] * idf[term]
+                else:
+                    score = 0
+                row.append(score)
+            else:
+                row.append(0)
+        heatmap_data.append(row)
+        
+    heatmap_df = pd.DataFrame(heatmap_data, index=heatmap_terms, columns=ordered_periods)
+    
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(heatmap_df, cmap="YlGnBu", annot=False)
+    plt.title("TF-IDF Scores of Top Terms Across Periods")
+    plt.xlabel("Historical Period")
+    plt.ylabel("Term")
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    
+    plt.savefig("tfidf_heatmap.png")
 
 
 if __name__ == "__main__":

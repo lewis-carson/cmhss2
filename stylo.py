@@ -4,8 +4,10 @@ from collections import Counter, defaultdict
 from datetime import datetime
 import nltk
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-print("Checking NLTK data...")
+
 required_nltk_resources = ['punkt', 'punkt_tab']
 
 for resource in required_nltk_resources:
@@ -80,7 +82,6 @@ def main():
         'doc_count': 0
     })
     
-    print(f"Reading {input_file}...")
     try:
         with open(input_file, 'r', encoding='utf-8') as f:
             for i, line in enumerate(f):
@@ -164,6 +165,29 @@ def main():
     df = df.dropna()
     
     print(df.to_string())
+
+    fig, axes = plt.subplots(3, 1, figsize=(12, 15), sharex=True)
+    
+    sns.lineplot(data=df, x=df.index, y="Avg Sent Len", marker='o', ax=axes[0], color='b')
+    axes[0].set_title("Average Sentence Length by Period")
+    axes[0].set_ylabel("Words per Sentence")
+    axes[0].grid(True)
+    
+    sns.lineplot(data=df, x=df.index, y="Yule's K", marker='s', ax=axes[1], color='g')
+    axes[1].set_title("Vocabulary Richness (Yule's K) by Period")
+    axes[1].set_ylabel("Yule's K")
+    axes[1].grid(True)
+    
+    sns.lineplot(data=df, x=df.index, y="Avg Word Len", marker='^', ax=axes[2], color='r')
+    axes[2].set_title("Average Word Length by Period")
+    axes[2].set_ylabel("Characters per Word")
+    axes[2].set_xlabel("Historical Period")
+    axes[2].grid(True)
+    
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    
+    plt.savefig("stylo_metrics.png")
 
 if __name__ == "__main__":
     main()

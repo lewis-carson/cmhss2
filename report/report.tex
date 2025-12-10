@@ -38,7 +38,7 @@
 
 % Title metadata
 	\title{Correspondence Networks and Linguistic Change among the American Founding Fathers (1706--1836)}
-\author{Lewis Carson \\ Durham University}
+\author{Lewis Carson (dhqq26) \\ Durham University}
 \date{\today}
 
 \begin{document}
@@ -48,7 +48,7 @@
     \centering
     \vspace*{2in}
     {\LARGE \textbf{Correspondence Networks and Linguistic Change among the American Founding Fathers (1706--1836)} \\[0.5em]}
-	{\large Lewis Carson \\ Durham University \\[1em]}
+	{\large Lewis Carson (dhqq26) \\ Durham University \\[1em]}
 	{\large Date: \today \\[2em]}
 	\vfill
 	% No abstract is required.
@@ -60,17 +60,16 @@
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
 % Begin with a title and introduction where you clearly state which model(s)/method(s) are used.
-This report presents a computational analysis of the correspondence patterns of the American Founding Fathers across distinct historical periods, ranging from the Colonial era (1706) to the post-Madison presidency (1836). By employing a combination of network analysis and natural language processing (NLP) techniques, specifically Term Frequency-Inverse Document Frequency (TF-IDF), n-gram analysis, and stylometric measures, we aim to uncover how the intellectual, political, and social preoccupations of these figures evolved over time. The study utilizes a "distant reading" approach to identify macro-level patterns in communication structure and vocabulary that would be indiscernible through traditional close reading of the massive corpus of over 183,000 letters.
+This report presents a computational analysis of the correspondence patterns of the American Founding Fathers across distinct historical periods, ranging from the Colonial era (1706) to the post-Madison presidency (1836). By employing a combination of network analysis and natural language processing (NLP) techniques, specifically Term Frequency-Inverse Document Frequency (TF-IDF), n-gram analysis, and stylometric measures, I aim to uncover how the intellectual, political, and social positions of these figures evolved over time. The study utilises a "distant reading" approach to identify macro-level patterns in communication structure and vocabulary that would be indiscernible through traditional close reading of the massive dataset of over 183,000 letters.
 
 % 2. Problem and Research Question
 \section*{Problem and Research Question}
 \addcontentsline{toc}{section}{Problem and Research Question}
 % Clearly state and motivate your chosen problem and research question(s). 
-% Provide sufficient background information to contextualize this problem for the reader.
-The primary research problem addresses the challenge of understanding the evolution of political discourse and personal relationships among the Founding Fathers during a century of profound transformation. With a corpus exceeding 180,000 documents, manual analysis is insufficient to capture the shifting dynamics of influence and language. This research investigates four key questions: (1) How did the vocabulary and prominent topics of correspondence shift across seven distinct historical periods? (2) How did the structure of the correspondence network change, and who emerged as central figures in different eras? (3) Are there observable trends in the formality and complexity of language used? (4) Do these computational findings align with established historical narratives regarding the development of the American nation?
+% Provide sufficient background information to contextualise this problem for the reader.
+The primary research problem addresses the challenge of understanding the evolution of political discussion and personal relationships among the Founding Fathers during a century of rapid transformation. With a dataset exceeding 180,000 documents, manual analysis is insufficient to capture the shifting dynamics of influence and language. This report investigates four key questions: (1) How did the vocabulary and prominent topics of correspondence shift across seven distinct historical periods? (2) How did the structure of the correspondence network change, and who emerged as central figures in different eras? (3) Are there observable trends in the formality and complexity of language used? (4) Do these computational findings align with established historical narratives regarding the development of the United States?
 
-\subsection*{Methodological Rationale}
-To answer these questions, this study employs a multi-modal computational approach. While network analysis can reveal \textit{who} was communicating, it cannot explain \textit{what} they were discussing. Conversely, linguistic analysis can track vocabulary but ignores the structural power dynamics of the correspondents. By integrating Network Analysis with three distinct NLP techniques (TF-IDF, N-grams, and Stylometry), we aim to triangulate the data.
+To answer these questions, this study employs a multi-modal computational approach. While network analysis can reveal \textit{who} was communicating, it cannot explain \textit{what} they were discussing. Conversely, linguistic analysis can track vocabulary but ignores the structural connections of the correspondents. By integrating Network Analysis with three distinct NLP techniques (TF-IDF, N-grams, and Stylometry), I aim to triangulate the data.
 
 % 3. Data Collection
 \section*{Data Collection}
@@ -79,13 +78,12 @@ To answer these questions, this study employs a multi-modal computational approa
 % Be sure that your dataset is appropriate for the given research question and sufficient for the model(s)/method(s) employed.
 Data was collected from the Founders Online archive (https://founders.archives.gov/), a comprehensive digital collection of the papers of major Founding Fathers. The dataset comprises metadata and full text for 183,673 documents spanning from 1706 to 1836. 
 
-The collection process was implemented in Python using the standard \texttt{urllib} library to interface with the Founders Online API. Due to the large volume of data, a robust scraping architecture was developed:
+The collection process was implemented in Python using the standard \texttt{urllib} library to interface with the Founders Online API. Due to the large volume of data, the following architecture was developed:
 \begin{itemize}
-    \item \textbf{Two-Stage Harvesting:} First, a lightweight metadata harvest collected document IDs, dates, authors, and recipients. Second, a content download script fetched the full text for each document.
-    \item \textbf{Checkpointing System:} To handle potential network failures during the long download process, a custom checkpointing mechanism (\texttt{download\_checkpoint.json}) was implemented. This allowed the scraper to resume from the last successful download rather than restarting, ensuring data integrity and efficiency.
+    \item \textbf{Metadata download:} First, a lightweight metadata download collected document IDs, dates, authors, and recipients. Second, a content download script fetched the full text for each document.
+    \item \textbf{Checkpointing System:} To handle potential network failures during the long download process, a custom checkpointing mechanism (\texttt{download\_checkpoint.json}) was implemented. This allowed the scraper to resume from the last successful download rather than restarting.
     \item \textbf{Storage Format:} Data was stored in JSON Lines (\texttt{.jsonl}) format. Unlike a standard JSON array which requires loading the entire file into memory, JSONL allows for line-by-line processing, which is essential for handling a text corpus of this magnitude (hundreds of megabytes) on standard hardware.
 \end{itemize}
-The data was subsequently partitioned into eight historical periods (e.g., Colonial, Revolutionary War, Washington Presidency) to facilitate temporal analysis. The scale and rich metadata of this dataset make it highly appropriate for both network and linguistic analysis.
 
 \subsection*{Remote Download and Transfer}
 Because the corpus is large and the full content download is I/O-heavy and may run for many hours, the initial data download was executed on the university HPC cluster ``Hamilton'' using a Slurm batch job. A small Slurm script (see \texttt{download.slurm}) was used to submit the process; the job requests moderate resources (48-hour wall time, 8GB memory) and runs the \texttt{download.py} script remotely. Running the download on Hamilton has two key benefits: (1) a stable, high-bandwidth connection to the remote API avoiding home-network interruptions; (2) the ability to restart or checkpoint long-running jobs using Slurm's job control.
@@ -108,8 +106,8 @@ To facilitate reproducibility, the repository includes scripts for data download
 \subsubsection*{Code Reuse and Attribution}
 Some code and resources are reused from open-source packages and online tutorials. In particular, the project uses:\\
 \begin{itemize}
-    \item \textbf{NLTK} for tokenization and lemmatization (\texttt{WordNetLemmatizer}) and for small preprocessing utilities (Bird et al., 2009).\\
-    \item \textbf{NetworkX} for constructing and analyzing correspondence graphs.\\
+    \item \textbf{NLTK} for tokenisation and lemmatisation (\texttt{WordNetLemmatizer}) and for small preprocessing utilities (Bird et al., 2009).\\
+    \item \textbf{NetworkX} for constructing and analysing correspondence graphs.\\
     \item \textbf{Pandas} and standard Python libraries for data handling and file I/O.\\
 \end{itemize}
 
@@ -117,27 +115,25 @@ Some code and resources are reused from open-source packages and online tutorial
 \section*{Model Description and Implementation}
 \addcontentsline{toc}{section}{Model Description and Implementation}
 % Describe the computational model(s)/method(s) and your implementation.
-The analysis was implemented using Python, leveraging the Natural Language Toolkit (NLTK) for linguistic processing and standard libraries for data manipulation. The corpus was first partitioned into eight distinct historical periods based on key dates: Colonial (pre-1775), Revolutionary War (1775--1783), Confederation (1784--1789), Washington Presidency (1789--1797), Adams Presidency (1797--1801), Jefferson Presidency (1801--1809), Madison Presidency (1809--1817), and Post-Madison (1817--1836).
+The analysis was implemented using Python, leveraging the Natural Language Toolkit (NLTK) for linguistic processing and standard libraries for data manipulation. The dataset was first partitioned into eight distinct historical periods based on key dates: Colonial (pre-1775), Revolutionary War (1775--1783), Confederation (1784--1789), Washington Presidency (1789--1797), Adams Presidency (1797--1801), Jefferson Presidency (1801--1809), Madison Presidency (1809--1817), and Post-Madison (1817--1836).
 
-\subsection*{Data Preprocessing}
-For all NLP tasks, the text underwent a rigorous preprocessing pipeline. Text was lowercased, and non-alphabetic characters were removed. We employed the NLTK \texttt{WordNetLemmatizer} to reduce words to their base forms (lemmas). A custom stopword list was created, combining standard English stopwords with common 18th-century epistolary terms (e.g., ``thou'', ``hath'', ``servant'', ``obedient'', ``favour'') to reduce noise and focus on content-bearing vocabulary.
+Text was lowercased, and non-alphabetic characters were removed. I employed the NLTK \texttt{WordNetLemmatizer} to reduce words to their base forms (lemmas). A custom stopword list was created, combining standard English stopwords with common 18th-century epistolary terms (e.g., ``thou'', ``hath'', ``servant'', ``obedient'', ``favour'') to reduce noise and focus on high-information vocabulary.
 
-\subsection*{Network Analysis}
-A directed graph was constructed where nodes represent historical figures (senders and recipients) and edges represent the volume of correspondence between them. The network data was extracted by parsing the metadata of all 183,673 documents. This structure allows for the calculation of centrality metrics and the visualization of communication density using chord diagrams.
+A directed graph was constructed where nodes represent historical figures (senders and recipients) and edges represent the volume of correspondence between them. The network data was extracted by parsing the metadata of all 183,673 documents. This structure allows for the calculation of centrality metrics and the visualisation of communication density using chord diagrams.
 
 \subsection*{TF-IDF Analysis}
-To identify the characteristic vocabulary of each era, we applied Term Frequency-Inverse Document Frequency (TF-IDF). Uniquely, we defined a ``document'' not as an individual letter, but as the \textit{aggregated text of all letters within a single historical period}.
+To identify the characteristic vocabulary of each era, I applied Term Frequency-Inverse Document Frequency (TF-IDF).
 \begin{itemize}
-    \item \textbf{Term Frequency (TF):} The frequency of a term $t$ in period $d$, normalized by the total word count of that period.
+    \item \textbf{Term Frequency (TF):} The frequency of a term $t$ in period $d$, normalised by the total word count of that period.
     \item \textbf{Inverse Document Frequency (IDF):} Calculated as $\log(N / df(t))$, where $N=8$ (the number of periods) and $df(t)$ is the number of periods containing term $t$.
 \end{itemize}
 This approach highlights terms that are statistically over-represented in a specific period relative to the entire timeline.
 
 \subsection*{N-gram Analysis}
-We extracted bigrams (2-word sequences) and trigrams (3-word sequences) to capture rhetorical patterns and compound nouns (e.g., ``United States'', ``public good''). Unlike TF-IDF, N-gram analysis relied on raw frequency counts within each period to identify the most common phrases used in daily discourse.
+I extracted bigrams (2-word sequences) and trigrams (3-word sequences) to capture rhetorical patterns and compound nouns (e.g., ``United States'', ``public good''). Unlike TF-IDF, N-gram analysis relied on raw frequency counts within each period to identify the most common phrases used in daily discourse.
 
 \subsection*{Stylometric Analysis}
-To measure the complexity and richness of the language, we calculated three key metrics for each period:
+To measure the complexity and richness of the language, I calculated three key metrics for each period:
 \begin{enumerate}
     \item \textbf{Average Sentence Length:} A proxy for syntactic complexity.
     \item \textbf{Average Word Length:} A proxy for lexical sophistication.
@@ -147,13 +143,11 @@ To measure the complexity and richness of the language, we calculated three key 
 \subsection*{Originality and Appropriateness}
 This project deliberately integrates network analysis with linguistic techniques (TF-IDF, n-grams, and stylometrics) to interrogate both the structural (who communicates with whom) and linguistic (what topics and styles are used) aspects of Founders' correspondence. The chosen methods are appropriate because they target the research questions: TF-IDF and n-grams detect changing vocabulary and rhetorical patterns, while stylometry captures the evolution of formal style across periods. The network analysis situates those linguistic features in a social structure, enabling historical interpretation beyond text-only analyses.
 
-The implementation contains several decisions important for a reproducible and technically robust analysis.
-
 \begin{itemize}
-    \item \textbf{Document Unit for TF-IDF:} To capture period-specific vocabulary, the corpus is aggregated by period—this reduces noise at the single-letter level and sharpens the contrast between eras.
-    \item \textbf{Preprocessing Rationale:} Using the WordNet lemmatizer and a custom stopword list aims to minimize archaic epistolary noise while preserving content-bearing tokens (e.g., place and person names). We opted to remove non-alphabetic characters to unify variant spellings (e.g., hyphenated forms), accepting the trade-off that editorial metadata sometimes uses abbreviations.
-    \item \textbf{Scale and Efficiency:} The choice of JSON Lines and simple streaming preprocessing allows working with a large corpus on commodity hardware. Slurm/cluster usage minimizes the fragility of downloading and reduces run-time interruptions.
-    \item \textbf{Sensitivity and Robustness:} Where appropriate, we cross-validate findings by comparing TF-IDF keywords with high-frequency n-grams and by manual inspection of outliers to identify OCR or metadata bleed.
+    \item \textbf{Document Unit for TF-IDF:} To capture period-specific vocabulary, the dataset is aggregated by period - this reduces noise at the single-letter level and sharpens the contrast between eras.
+    \item \textbf{Preprocessing Rationale:} Using the WordNet lemmatiser and a custom stopword list aims to minimise noise while preserving content-bearing tokens (e.g., place and person names). I opted to remove non-alphabetic characters to unify variant spellings (e.g., hyphenated forms), accepting the trade-off that metadata sometimes uses abbreviations.
+    \item \textbf{Scale and Efficiency:} The choice of JSON Lines and simple streaming preprocessing allows working with a large capture on commodity hardware. Slurm/cluster usage minimises the fragility of downloading and reduces run-time interruptions.
+    \item \textbf{Sensitivity and Robustness:} Where appropriate, I cross-validate findings by comparing TF-IDF keywords with high-frequency n-grams and by manual inspection of outliers to identify OCR or metadata bleed.
 \end{itemize}
 
 % 5. Results
@@ -163,7 +157,7 @@ The implementation contains several decisions important for a reproducible and t
 The computational analysis of the Founding Fathers' correspondence reveals distinct temporal patterns across network structure, vocabulary usage, and stylistic evolution. These findings map closely to the major political and personal phases of the founders' lives, from the colonial era through the early republic to their final years.
 
 \subsection*{Network Analysis}
-The visualization of the correspondence network across eight historical periods (Figures \ref{fig:network_part1} and \ref{fig:network_part2}) illustrates a fundamental structural transformation in the "Republic of Letters". Quantitative metrics for these networks are provided in Appendix C (Table \ref{tab:network_stats}).
+The visualisation of the correspondence network across eight historical periods (Figures \ref{fig:network_part1} and \ref{fig:network_part2}) illustrates the structural changes in the "Republic of Letters". Quantitative metrics for these networks are provided in Appendix C (Table \ref{tab:network_stats}).
 
 \begin{figure}[H]
     \centering
@@ -219,44 +213,45 @@ The visualization of the correspondence network across eight historical periods 
     \label{fig:network_part2}
 \end{figure}
 
-The Colonial Era is characterized by fragmentation. The graph shows distinct, loosely connected clusters representing regional elites (e.g., the Virginia planters vs. the Boston intellectuals) with no single dominant center. Benjamin Franklin holds the highest degree (922), reflecting his unique position as a colonial agent in London connecting disparate groups.
+The Colonial Era graph displays multiple disconnected components. Benjamin Franklin holds the highest degree (922). During the Revolutionary War, the network size more than triples to 5,079 nodes, with Washington as the central node (degree 3,056).
 
-The Revolutionary War forces a dramatic centralization and expansion. The network size more than triples to 5,079 nodes. It adopts a "star topology" or "hub-and-spoke" model, with Washington as the undisputed central node (degree 3,056), mediating information between Congress, the Army, and the states. This is the visual signature of a command economy of information.
+The Confederation Period shows new nodes of influence appearing (e.g., Jefferson and Adams). The Presidential Eras (Washington through Madison) show Washington and Jefferson as the central nodes. Notably, Jefferson's presidency exhibits the highest individual degree centrality in the entire corpus (4,391).
 
-The Confederation Period shows a partial relaxation of this centrality, with new nodes of influence appearing (e.g., Jefferson and Adams in Europe), reflecting the diplomatic dispersion of the era.
-
-The Presidential Eras (Washington through Madison) see the re-emergence of the executive branch as the gravitational center. Notably, Jefferson's presidency exhibits the highest individual degree centrality in the entire corpus (4,391), surpassing even Washington's wartime command, indicating an immense personal investment in managing the administration via correspondence.
-
-Finally, the Post-Madison network shows a "retirement diffusion." While key figures like Jefferson remain central due to their vast correspondence (degree 2,477), the network structure loosens, reflecting a shift from administrative command to intellectual exchange (the "University phase").
+Finally, the Post-Madison network shows key figures like Jefferson remain central (degree 2,477), though the network density decreases.
 
 \subsection*{TF-IDF Analysis}
-Term Frequency-Inverse Document Frequency (TF-IDF \cite{salton1988}) analysis highlights the unique vocabulary defining each historical period. The results (see Appendix A) show a clear trajectory from personal and local concerns to national administration and finally to Durham Universityal legacy.
+Term Frequency-Inverse Document Frequency (TF-IDF \cite{salton1988}) analysis identifies the terms with the highest statistical weight in each period (see Appendix A).
 
 \begin{itemize}
-    \item \textbf{Colonial (1706--1774):} The vocabulary is intensely local and personal. Terms like ``doeg'' (Doeg Run) and ``muddy hole'' reflect Washington's focus on land surveying and estate management. ``Cravenstreet'' points to Benjamin Franklin's London residence, while ``teedyuscung'' indicates specific, localized diplomatic engagements with Native American leaders, contrasting sharply with the abstract "Indian affairs" of later periods.
-    \item \textbf{Revolutionary War (1775--1783):} The discourse shifts abruptly to military logistics. Top terms include ``middlebrook'', ``peekskill'', and ``pompton''—strategic encampments that dominated the writers' daily reality
-    \item \textbf{Confederation (1784--1788):} Vocabulary bifurcates between the domestic and the diplomatic. We see ``dogue'' and ``plowed'' (Washington returning to Mount Vernon) alongside ``calonne'' and ``thulemeier'' (Jefferson and Adams in Europe). 
-    \item \textbf{Washington Presidency (1789--1797):} The language becomes administrative and Durham Universityal. Terms like ``assignats'' (French revolutionary currency) and ``genest'' (Citizen Genêt) mark the intrusion of global economic and political instability into the fragile new republic. 
-    \item \textbf{Adams Presidency (1797--1801):} The Quasi-War with France drives the vocabulary. ``Artillerists'', ``talleyrand'', and ``toussaint'' (L'Ouverture) rise to prominence, indicating a fixation on external threats and the Haitian Revolution.
-    \item \textbf{Jefferson Presidency (1801--1809):} The focus shifts to continental expansion. ``Pichon'', ``turreau'', and ``yrujo'' (diplomats) are key, alongside ``natchitoches'', reflecting the administrative context of the Louisiana Purchase.
-    \item \textbf{Madison Presidency (1809--1817):} The War of 1812 dominates. ``Napoleon'' is the top term, but economic terms like ``merino'' (sheep) also appear, signaling the drive for domestic industrial independence (wool production) necessitated by the British blockade.
-    \item \textbf{Post-Madison (1817--1836):} The vocabulary turns remarkably academic. Terms like ``dormitory'', ``bursar'', ``dunglison'' (a professor recruited by Jefferson), and ``bonnycastle'' dominate.
+    \item \textbf{Colonial (1706--1774):} Top terms include local place names and estate references such as ``doeg'', ``muddy hole'', and ``cravenstreet''.
+    \item \textbf{Revolutionary War (1775--1783):} The list is dominated by military locations and names, including ``middlebrook'', ``peekskill'', and ``tyonderoga''.
+    \item \textbf{Confederation (1784--1788):} Terms include agricultural references (``plowed'') and names of European diplomats (``calonne'', ``thulemeier'').
+    \item \textbf{Washington Presidency (1789--1797):} Key terms include ``assignats'', ``genest'', and ``hamiltonsecy''.
+    \item \textbf{Adams Presidency (1797--1801):} Military and diplomatic terms such as ``artillerists'', ``talleyrand'', and ``tousard'' appear frequently.
+    \item \textbf{Jefferson Presidency (1801--1809):} Terms include ``natchitoches'', ``turreau'', and ``osage''.
+    \item \textbf{Madison Presidency (1809--1817):} ``Napoleon'', ``bonaparte'', and ``merino'' are among the top terms.
+    \item \textbf{Post-Madison (1817--1836):} The vocabulary includes academic terms like ``dormitory'', ``bursar'', and ``university virginia''.
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{tfidf_heatmap.png}
+    \caption{Heatmap of Top TF-IDF Terms Across Historical Periods}
+    \label{fig:tfidf_heatmap}
+\end{figure}
 
 \subsection*{Stylometric Analysis}
-Beyond vocabulary, the structure of the language evolves significantly (see Appendix B, Table \ref{tab:stylo}).
-\begin{itemize}
-    \item \textbf{Syntactic Complexity:} Average sentence length jumps from 18.8 words in the Colonial period to 26.4 words during the Revolutionary War. This 40\% increase suggests that the exigencies of war and statecraft required a more complex, qualified, and precise mode of expression than private business correspondence.
-    \item \textbf{Lexical Richness:} Yule's K, a measure of vocabulary diversity, peaks at 119.5 during the Washington Presidency. This is the highest value in the entire corpus. It suggests that the task of inventing the American presidency required an unprecedented expansion of the political lexicon—the Founders were literally finding new words to describe a new form of government.
-\end{itemize}
+Table \ref{tab:stylo} in Appendix B presents the average word length, sentence length, and Yule's K (vocabulary richness) for each period.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{stylo_metrics.png}
+    \caption{Evolution of Stylometric Metrics Across Historical Periods}
+    \label{fig:stylo_metrics}
+\end{figure}
 
 \subsection*{N-gram Analysis}
-N-gram analysis (Appendix B) corroborates the TF-IDF findings while revealing structural changes in language.
-\begin{itemize}
-    \item \textbf{The Disappearance of the Local:} In the Colonial period, top bigrams are specific and local, such as ``muddy hole'' (a farm on Washington's estate) and ``doeg run''. These vanish entirely in later periods, replaced by abstract political entities.
-    \item \textbf{The Rise of the Nation:} The bigram ``united state'' is virtually absent in the Colonial period but becomes the dominant political entity from the Revolutionary War onwards.
-    \item \textbf{Durham Universityalization:} The Revolutionary War is characterized by ``head quarter'', ``court martial'', and ``commander chief''—Durham Universityal terms that replace the personal salutations of the earlier era.
-\end{itemize}
+Table \ref{tab:bigrams} in Appendix B lists the top 10 bigrams for each historical period.
 % 6. Critical Evaluation
 \section*{Critical Evaluation}
 \addcontentsline{toc}{section}{Critical Evaluation}
@@ -264,38 +259,48 @@ N-gram analysis (Appendix B) corroborates the TF-IDF findings while revealing st
 % This should involve critical analysis of the adequacy of the modelling (e.g., what are the assumptions the models rely on, and do they all hold; are there factors or biases that might invalidate conclusions drawn, etc.), as well as comparison with external data and/or published research on the topic.
 
 \subsection*{Methodological Assumptions and Limitations}
-The models rely on several key assumptions. First, Network Analysis assumes that the frequency of correspondence equates to the strength of a relationship. This ignores the qualitative nature of the letters; a single long, intimate letter may signify a stronger bond than ten brief administrative notes. Second, TF-IDF assumes that term frequency correlates with thematic importance. However, in 18th-century epistolary style, formulaic politeness (e.g., "your most obedient humble servant") is highly frequent but semantically empty. While we mitigated this with a custom stopword list, some noise inevitably remains.
+The models rely on several key assumptions. First, Network Analysis assumes that the frequency of correspondence equates to the strength of a relationship. This ignores the qualitative nature of the letters; a single long, intimate letter may signify a stronger bond than ten brief administrative notes. Second, TF-IDF assumes that term frequency correlates with thematic importance. However, in 18th-century epistolary style, formulaic politeness (e.g., "your most obedient humble servant") is highly frequent but semantically empty. While I mitigated this with a custom stopword list, some noise inevitably remains.
 
-Furthermore, the dataset is subject to \textbf{survival bias}, as not all historical correspondence has been preserved, and \textbf{selection bias}, as Founders Online focuses on prominent figures ("Great Man" history). As noted in the lecture material regarding n-gram assumptions, \textbf{OCR errors and metadata artifacts} significantly impact results. For instance, the appearance of ``hamiltonsecy'' in the TF-IDF top terms reveals that editorial annotations (e.g., "Hamilton, Secy.") were not fully separated from the body text during the scraping process. Similarly, spelling variations (e.g., ``Doeg Run'' vs. ``Dogue Run'') fragment the counts for single concepts, a common issue in pre-standardized 18th-century English that simple lemmatization cannot fully resolve.
+Furthermore, the dataset is subject to survival bias, as not all historical correspondence has been preserved, and selection bias, as Founders Online focuses on prominent figures ("Great Man" history). As noted in the lecture material regarding n-gram assumptions, OCR errors and metadata artefacts significantly impact results. For instance, the appearance of ``hamiltonsecy'' in the TF-IDF top terms reveals that editorial annotations (e.g., "Hamilton, Secy.") were not fully separated from the body text during the scraping process. Similarly, spelling variations (e.g., ``Doeg Run'' vs. ``Dogue Run'') fragment the counts for single concepts, a common issue in pre-standardised 18th-century English that simple lemmatisation cannot fully resolve.
 
 \subsection*{Comparison with Historical Narratives}
 Despite these limitations, the computational results align remarkably well with established historical narratives, such as Gordon Wood's account of the early republic \cite{wood2009}, validating the "distant reading" approach.
 \subsection*{Synthesis of Methods}
-By employing multiple methods, we can observe how structural power correlates with linguistic change. The Network Analysis shows a centralization of power around Washington during the war and presidency. The tripling of the network size during the Revolutionary War (1,454 to 5,079 nodes) coincides perfectly with the 40\% increase in sentence length, suggesting that managing a larger, more complex network required more complex linguistic structures. This structural shift is mirrored in the TF-IDF results, which transition from diverse local terms to a unified, administrative vocabulary. However, the methods also diverge in revealing ways: while Stylometry shows a relatively constant sentence length after the Revolutionary War spike, the vocabulary richness (Yule's K) peaks specifically during the Washington presidency.
+By employing multiple methods, I can observe how structural power correlates with linguistic change. The Network Analysis reveals a dramatic centralisation of power, with the network size more than tripling during the Revolutionary War (from 1,454 to 5,079 nodes). This structural explosion coincides perfectly with the stylometric data, where average sentence length jumps from 18.8 words in the Colonial period to 26.4 words during the war. This correlation suggests that the requirements of war and statecraft required a more complex, qualified, and precise mode of expression than private business correspondence.
 
-This alignment suggests that while the models may be noisy at the micro-level (individual words), they are robust at the macro-level (historical trends). The Network Analysis shows a centralization of power around Washington during the war and presidency. This structural shift is mirrored in the TF-IDF results, which transition from diverse local terms to a unified, administrative vocabulary. However, the methods also diverge: while Stylometry shows a relatively constant sentence length, the vocabulary richness (Yule's K) peaks during the Washington presidency, suggesting that while the \textit{complexity} of sentence structure remained stable, the \textit{lexical diversity} required to build a nation increased significantly. This multi-modal approach provides a more nuanced view than any single method could offer.
+This structural shift is further mirrored in the N-gram analysis. The bigram ``united state'' is virtually absent in the Colonial period — where local terms like ``muddy hole'' and ``doeg run'' dominate — but appears frequently from the Revolutionary War onwards, signalling the rise of a national consciousness.
+
+However, the methods also diverge in revealing ways. While Stylometry shows a relatively constant sentence length after the Revolutionary War spike, the vocabulary richness (Yule's K) peaks specifically during the Washington presidency at 119.5 (the highest value in the corpus). This suggests that the task of inventing the American presidency required an unprecedented expansion of the political vocabulary.
+
+This alignment suggests that while the models may be noisy at the micro-level (individual words), they are robust at the macro-level (historical trends). This multi-modal approach provides a more nuanced view than any single method could offer. For instance, a purely linguistic analysis might interpret the rise of "United States" as a simple change in topic. However, when overlaid with the network data showing extreme centralisation, I can see that this linguistic shift was propagated through a highly controlled hub-and-spoke structure. The language of the nation did not emerge organically from the periphery; it was broadcast from the centre.
 
 \subsection*{Evaluation Methodology and Validation}
-To satisfy the assignment's requirement for critical evaluation and to validate claims derived from computational models, several evaluation strategies were used:
+To validate claims derived from computational models, several evaluation strategies were used:
 \begin{itemize}
-    \item \textbf{Manual verification} of top terms and sample letters: a historian-authored spot-check of the top TF-IDF terms in each period ensured that salient words correspond to the contexts inferred (e.g., military or administrative contexts).
-    \item \textbf{Sensitivity analyses}: To test the stability of TF-IDF rankings, we re-ran TF-IDF with and without the custom stopword list and with a minimal lemmatization pipeline to measure term stability across preprocessing choices.
-    \item \textbf{Metadata consistency checks}: Indexes for place names, person names, and editorial notes were checked for bleed-through (e.g., "hamiltonsecy"), and where these occur they were handled by either removal or separate analysis and flagged in the appendices.
+    \item \textbf{Manual verification} of top terms and sample letters: a  spot-check of the top TF-IDF terms in each period ensured that important words correspond to the contexts inferred (e.g., military or administrative contexts).
+    \item \textbf{Sensitivity analyses}: To test the stability of TF-IDF rankings, I re-ran TF-IDF with and without the custom stopword list and with a minimal lemmatisation pipeline to measure term stability across preprocessing choices.
+    \item \textbf{Metadata consistency checks}: Indexes for place names, person names, and editorial notes were checked for bleed-through (e.g., "hamiltonsecy"), and where these occur they were handled by either removal or separate analysis (mentioned in this report).
 \end{itemize}
 
 % Discuss what conclusions can be drawn from the model.
 \section*{Conclusions}
 \addcontentsline{toc}{section}{Conclusions}
-This study demonstrates the utility of computational methods in enriching historical research. The analysis confirms that the Founding Fathers' correspondence patterns were not static but evolved dynamically in response to the changing political landscape. We observed a clear trajectory: from the personal and local concerns of the Colonial era, through the urgent military logistics of the Revolutionary War, to the complex administrative statecraft of the early Republic, and finally to a reflective focus on education and legacy in the Post-Madison years.
+This study demonstrates the utility of computational methods in enriching historical research. The analysis confirms that the Founding Fathers' correspondence patterns were not static but evolved dynamically in response to the changing political landscape. I observed a clear trajectory: from the personal and local concerns of the Colonial era, through the urgent military logistics of the Revolutionary War, to the complex administrative statecraft of the early Republic, and finally to a reflective focus on education and legacy in the Post-Madison years.
 
-A key finding is the peak in vocabulary richness during the Washington Presidency, suggesting that the task of establishing a new national government required a uniquely complex and varied lexicon. These findings underscore the value of "distant reading" as a complement to traditional historical scholarship, offering a quantitative backbone to qualitative historical narratives and revealing the linguistic footprint of nation-building.
+Specifically, the integration of network analysis with linguistic profiling provided a dual perspective on this evolution. Structurally, the correspondence network transformed from a fragmented collection of regional elites (e.g., the Virginia planters vs. the Boston intellectuals) into a highly centralised "star" topology during the Revolutionary War. This shift represents the visual signature of a command economy of information, driven by the command-and-control necessities of the conflict. This centralisation persisted into the early presidency, with Thomas Jefferson's era exhibiting the highest degree centrality, reflecting an immense personal investment in managing the administration via correspondence. Finally, the Post-Madison network illustrates a "retirement diffusion," reflecting a shift from administrative command to intellectual exchange, as the network density decreases and the structure loosens.
+
+Linguistically, this structural shift was mirrored by a transformation in discourse. TF-IDF and n-gram analyses revealed a sharp pivot from the concrete, agricultural vocabulary of the colonial gentry (the "disappearance of the local") to the abstract, nationalistic terminology of the republic (the "rise of the nation"). The specific vocabulary tracks the nation's history with precision: the military logistics of the Revolution give way to the economic anxieties of the Washington era ("assignats"), the diplomatic tensions of the Adams presidency ("Talleyrand"), and the continental expansion under Jefferson ("Natchitoches"). Finally, the vocabulary turns reflective and academic in the Post-Madison era ("dormitory", "bursar"), mirroring Jefferson's founding of the University of Virginia. The emergence of institutional terms like "head quarter" and "court martial" replaced the personal salutations of the earlier era. Crucially, the stylometric data indicates that this was not merely a change in topic but in cognitive complexity. The 40\% increase in sentence length during the war, coupled with the peak in vocabulary richness (Yule's K) during the Washington presidency, suggests that the intellectual burden of nation-building required a more sophisticated and varied mode of expression than the private correspondence of the previous era. This reveals a compelling dynamic: while the vocabulary became more \textit{standardised} across the network (as evidenced by the rise of shared national bigrams like "United States"), it simultaneously became more \textit{diverse} within individual letters (as shown by the peak in Yule's K). The Founders were not just adopting a few slogans; they were developing a sophisticated technical language of governance that allowed for precise coordination across a rapidly expanding network.
+
+These findings underscore the value of "distant reading" as a complement to traditional historical scholarship. By quantifying the "Republic of Letters," we have provided empirical support for the narrative that the American nation was forged not just on the battlefield, but through a radical restructuring of communication networks and a deliberate expansion of the political lexicon.
+
+Ultimately, this project reveals that the "Republic of Letters" was not merely a metaphor for intellectual exchange, but a tangible, measurable network that physically and linguistically restructured itself to meet the demands of nation-building. The transition from the loose, egalitarian connections of the colonial era to the centralised, hierarchical structures of the war and early presidency mirrors the political evolution of the United States itself. By mapping these changes, I gain a new appreciation for the logistical and intellectual labour required to create a nation — a labour that is preserved in the very syntax and vocabulary of the Founders' correspondence.
 
 \subsection*{Further Work and Reflection}
 To address remaining limitations and to deepen interpretation, a number of further steps could refine and extend this project:
 \begin{itemize}
-    \item \textbf{Formal hypothesis testing:} Explicit testing—for example, whether sentence length distributions differ significantly between periods—would strengthen claims about stylistic change.
-    \item \textbf{Improved OCR and spelling normalization:} Preprocessing improvements could reduce term fragmentation (e.g., Doeg/Dogue) and editorial artifacts (e.g., hamitonsecy). This includes custom spelling unification or editorial cleaning.
-    \item \textbf{Authorship attribution and contextualization:} Applying supervised classification to determine if stylistic changes are driven by authorship differences or by broader social changes would refine causal claims.
+    \item \textbf{Formal hypothesis testing:} Explicit testing - for example, whether sentence length distributions differ significantly between periods - would strengthen claims about stylistic change.
+    \item \textbf{Improved OCR and spelling normalisation:} Preprocessing improvements could reduce term fragmentation (e.g., Doeg/Dogue) and editorial artefacts (e.g., hamitonsecy). This includes custom spelling unification or editorial cleaning.
+    \item \textbf{Authorship attribution and contextualisation:} Applying supervised classification to determine if stylistic changes are driven by authorship differences or by broader social changes would refine causal claims.
 \end{itemize}
 
 \newpage

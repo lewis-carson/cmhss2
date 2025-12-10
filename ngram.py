@@ -76,7 +76,6 @@ def main():
 
     period_docs = defaultdict(list)
     
-    print(f"Reading {input_file}...")
     try:
         with open(input_file, 'r', encoding='utf-8') as f:
             for i, line in enumerate(f):

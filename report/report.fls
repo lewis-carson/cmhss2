@@ -261,6 +261,12 @@ INPUT ../network_Madison_Presidency.png
 INPUT ../network_Post-Madison.png
 INPUT ../network_Post-Madison.png
 INPUT ../network_Post-Madison.png
+INPUT ./tfidf_heatmap.png
+INPUT ./tfidf_heatmap.png
+INPUT ./tfidf_heatmap.png
+INPUT ./stylo_metrics.png
+INPUT ./stylo_metrics.png
+INPUT ./stylo_metrics.png
 INPUT report.aux
 INPUT ./report.out
 INPUT ./report.out
